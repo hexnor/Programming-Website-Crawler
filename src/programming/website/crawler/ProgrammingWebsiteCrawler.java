@@ -14,8 +14,9 @@ public class ProgrammingWebsiteCrawler {
         Scanner sc=new Scanner(System.in);
          try {
                  int p=0;
-                 String logd="############################################\n Programming Website Solution Crawler ###### \n############################################ ";
-                 
+            String logd="#######Developed By Yokesh Rana#############\n";
+                  logd+="############################################\n Programming Website Solution Crawler ###### \n############################################ ";
+                  
                  while(p<logd.length())
                  {  Thread.sleep(10);
                      System.out.print(logd.charAt(p));
@@ -34,14 +35,14 @@ public class ProgrammingWebsiteCrawler {
          
         if(choice==1){
           
-          System.out.print("Enter the user id for codechef :::  ");
+          System.out.print("=>Enter the user id for codechef :::  ");
         while(username.contains("\n")||username.equals(""))
           username=sc.nextLine();
             Codechef obj=new Codechef(username);
-            System.out.print("username");
-            System.out.println("Now starting");
+            System.out.print("=> Fetching " + username +" On Codechef !!!!");
+        //    System.out.println("Now starting");
             obj.start();
-           System.out.println("fininshed");
+          // System.out.println("fininshed");
         }else
             if (choice==2){
                 new Hackerrack();

@@ -22,6 +22,7 @@ import org.jsoup.select.Elements;
  */
 class Fireit extends Thread {
     String Foldername,ProblemName,url,dir="null";
+    int count=0;
     
     
  Fireit(String foldername, String problemname, String url) {
@@ -33,6 +34,7 @@ class Fireit extends Thread {
     }
    
     public void run() {
+        count++;
         dir="PWC-Created-by-Yokesh-Rana";
         dir=dir+"/" +Foldername+"/";
        File file = new File(dir);
@@ -69,8 +71,15 @@ class Fireit extends Thread {
             System.out.println("File creation error");
             
         } catch (IOException ex) {
-           System.out.println("!!!!!!||-- Server Down Trying Again --||!!!!!!");
-            run();
+           System.out.println("!!!!!!||-- Server Down Trying Again After 500ms --||!!!!!!");
+             if(count<5){try {
+                
+                Thread.sleep(1000);
+                 run();
+            } catch (InterruptedException ex1) {
+                Logger.getLogger(Fireit.class.getName()).log(Level.SEVERE, null, ex1);
+            }}
+           
         }
         
      
