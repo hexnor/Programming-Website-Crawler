@@ -65,7 +65,7 @@ class Fireit extends Thread {
                +   "################  FOR MORE INFO CONTACT ME AT yokeshrana@gmail.com  #######################################\n"
                +   "##########################################################################################################\n\n\n";
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(dir+"/"+ProblemName)));
-            out.write(sout);
+            out.write(out);
             out.close();   
         } catch (FileNotFoundException ex) {
             System.out.println("File creation error");
@@ -74,7 +74,7 @@ class Fireit extends Thread {
            System.out.println("!!!!!!||-- Server Down Trying Again After 500ms --||!!!!!!");
              if(count<5){try {
                 
-                Thread.sleep(1000);
+                Thread.sleep(8000);
                  run();
             } catch (InterruptedException ex1) {
                 Logger.getLogger(Fireit.class.getName()).log(Level.SEVERE, null, ex1);
