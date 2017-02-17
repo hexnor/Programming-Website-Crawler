@@ -24,19 +24,24 @@ public class ProgrammingWebsiteCrawler {
 } catch(InterruptedException ex) {
     
 }
-         String username="yr96";
-        System.out.println("Enter 1 For Codechef \nEnter 2 For Hackerrank \nEnter 3 For Spoj");
-       
+        String username="";
+        System.out.println("");
+        System.out.println("######      Enter 1 For Codechef      ######");
+        System.out.println("######      Enter 2 For Hackerrank    ######");
+        System.out.println("######      Enter 3 For Spoj          ######");
+        System.out.println("############################################");
         int choice=sc.nextInt();
          
         if(choice==1){
           
-            System.out.println("Enter the user id for codechef");
-        // username=sc.nextLine();
+          System.out.print("Enter the user id for codechef :::  ");
+        while(username.contains("\n")||username.equals(""))
+          username=sc.nextLine();
             Codechef obj=new Codechef(username);
+            System.out.print("username");
             System.out.println("Now starting");
             obj.start();
-            System.out.println("fininshed");
+           System.out.println("fininshed");
         }else
             if (choice==2){
                 new Hackerrack();
@@ -44,6 +49,6 @@ public class ProgrammingWebsiteCrawler {
                 if(choice==3)
                     new Spoj();
          
-    }
+                      }
     
 }
