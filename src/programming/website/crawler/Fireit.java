@@ -44,18 +44,20 @@ class Fireit extends Thread {
         Document doc = Jsoup.connect(url).userAgent("Mozilla/17.0").get();
                 
        Elements ele=doc.select("div[id=solutiondiv]");
+       Elements header=ele.select("div[class=head]");
        Elements liele=ele.select("li");
        String sout="##########################################################################################################\n"
-               +   "################ Programming Website Crawler (PWC) By Yokesh Rana  #######################################\n"
+               +   "################ Programming Website Crawler (PWC) #######################################################\n"
                +   "##########################################################################################################\n\n\n";
           
       
-       
+    
        String sp = System.getProperty("line.separator");
+          sout=sout.concat(sp+header.text()+""+sp);
          sp=sp+"\t";
            for (Element x : liele) {
             
-             sout= sout.concat(x.text()+""+sp);
+             sout= sout.concat(sp+x.text()+"");
         
            }
            
@@ -64,8 +66,8 @@ class Fireit extends Thread {
              sout+="\n\n##########################################################################################################\n"
                +   "################  FOR MORE INFO CONTACT ME AT yokeshrana@gmail.com  #######################################\n"
                +   "##########################################################################################################\n\n\n";
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(dir+"/"+ProblemName)));
-            out.write(out);
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(dir+"/"+ProblemName+".txt")));
+            out.write(sout);
             out.close();   
         } catch (FileNotFoundException ex) {
             System.out.println("File creation error");
@@ -74,7 +76,7 @@ class Fireit extends Thread {
            System.out.println("!!!!!!||-- Server Down Trying Again After 500ms --||!!!!!!");
              if(count<5){try {
                 
-                Thread.sleep(8000);
+                Thread.sleep(1000);
                  run();
             } catch (InterruptedException ex1) {
                 Logger.getLogger(Fireit.class.getName()).log(Level.SEVERE, null, ex1);

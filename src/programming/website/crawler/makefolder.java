@@ -35,17 +35,20 @@ class makefolder extends Thread {
        // System.out.println(foldername);
        try {
            Document doc = Jsoup.connect("http://codechef.com/"+url).userAgent("Mozilla/17.0").get();
+          
               Elements all = doc.select("a[href]");
               Thread.sleep(500);
+              int i=0;
               for(Element x: all){
+                  i++;
 				if(x.attr("href").contains("/viewsolution/"))
                                 {
-                               
+                                      String supply=problemname+"-"+i;
                                    newurl="http://codechef.com"+x.attr("href");
                                    // System.out.println(newurl);
-                                  Fireit obj= new Fireit(foldername,problemname,newurl) ;       //compname /problem url /problem name 
+                                  Fireit obj= new Fireit(foldername,supply,newurl) ;       //compname /problem url /problem name 
                                   obj.start();
-                                    System.out.println("+++ Wrting file "+problemname+" in Folder  "+ foldername + "++++");
+                                    System.out.println("+++ Wrting file "+supply+" in Folder  "+ foldername + "++++");
                                 }
 			}
               
